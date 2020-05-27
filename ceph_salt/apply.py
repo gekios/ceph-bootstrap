@@ -1272,7 +1272,7 @@ class CephSaltExecutor:
     def check_external_time_servers(ts_minion, external_ts_list):
         PP.println("Installing python3-ntplib on time server node...")
         salt_result = SaltClient.local().cmd(
-            ts_minion, 'pkg.install', ["name='python3-ntplib'", "refresh=True"]
+            ts_minion, 'pip.install', ["pkgs='python3-ntplib'"]
         )
         for external_ts in external_ts_list:
             max_attempts = 10
